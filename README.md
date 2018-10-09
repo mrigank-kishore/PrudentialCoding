@@ -14,3 +14,5 @@ it will list all the media type, internal link and external link in tabular form
 - change directry to newly create target folder
 - execute ** java -jar L1Crawaler-0.0.1-SNAPSHOT.jar http://web.mit.edu/ mit.edu ** where first parameter is root website and second param is domain name
 - new pagedetail.html will generate in same directory. It can be opened with any web browser to see the result.
+
+Sample output is commited in root of the project for reference.
