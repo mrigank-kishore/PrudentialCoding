@@ -2,6 +2,7 @@ package com.prudential.test.model;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 public class PageContainer {
 	private String urlkey;
@@ -43,30 +44,30 @@ public class PageContainer {
 	
 	@Override
 	public String toString(){
-		String markup = "<h1>Base url is: " + this.getUrlkey() +" and page level is: " + this.getLevel() + "</h1>";
+		StringBuilder markup = new StringBuilder("<h1>Base url is: " + this.getUrlkey() +" and page level is: " + this.getLevel() + "</h1>");
 		//start markup for media links
-		markup += "<div>List of media links are: </div><table border=1><thead><tr><td>Media type</td><td>Media Link</td></tr></thead><tbody>";
+		markup.append("<div>List of media links are: </div><table border=1><thead><tr><td>Media type</td><td>Media Link</td></tr></thead><tbody>");
 		for(Map.Entry<String,String> entry : this.getMediaContent().entrySet()) {
-			markup += ("<tr><td>" + entry.getValue() + "</td><td>" + entry.getKey() + "</td></tr>");
+			markup.append(("<tr><td>" + entry.getValue() + "</td><td>" + entry.getKey() + "</td></tr>"));
 		}
-		markup += "</tbody></table><hr>";
+		markup.append("</tbody></table><hr>");
 		//end markup for media links
 
 		//start markup for external links
-		markup += "<table border=1><thead><tr><td>List of external links are: ("+ this.getUniqueExternalUrl().size()+ ")</td></tr></thead><tbody>";
+		markup.append("<table border=1><thead><tr><td>List of external links are: ("+ this.getUniqueExternalUrl().size()+ ")</td></tr></thead><tbody>");
 		for(String link : this.getUniqueExternalUrl()) {
-			markup += "<tr><td>" + link + "</td></tr>";
+			markup.append("<tr><td>" + link + "</td></tr>");
 		}
-		markup += "</tbody><table><hr>";
+		markup.append("</tbody><table><hr>");
 		//end markup for external links
 
 		//start markup for external links
-		markup += "<table border=1><thead><tr><td>List of internal links are:("+ this.getUniqueInternalUrl().size()+ ") </td></tr></thead><tbody>";
+		markup.append("<table border=1><thead><tr><td>List of internal links are:("+ this.getUniqueInternalUrl().size()+ ") </td></tr></thead><tbody>");
 		for(String link : this.getUniqueInternalUrl()) {
-			markup += "<tr><td>" + link + "</td></tr>";
+			markup.append("<tr><td>" + link + "</td></tr>");
 		}
-		markup += "</tbody><table><hr>";
+		markup.append("</tbody><table><hr>");
 		//end markup for external links
-		return markup;
+		return markup.toString();
 	}
 }
